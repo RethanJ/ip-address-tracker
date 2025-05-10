@@ -16,14 +16,14 @@ search_form.addEventListener("submit", (event) => {
 async function search_Ip_Address(ip_address) {
   const api_key = "at_b1AyHXsURuXnWIQ8Tl6NNawNn8VYP";
   const request = await fetch(
-    `https://geo.ipify.org/api/v2/country,city?apiKey=${api_key}&ipAddress=${ip_address}`
+    `https://ipapi.co/${ip_address}/json/`
   );
   const response = await request.json();
 
-  const { location, ip, isp } = response;
+  const { city, timezone , ip } = response;
 
   /* Update the ui on the page */
-  update_ui(ip, location.city, location.timezone, isp);
+  update_ui(ip, city, timezone);
 
   /* Update the map on the page */
   /* first remove all map instances if any */
